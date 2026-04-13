@@ -1,8 +1,9 @@
-from service import criarLabirinto 
+from service import criarLabirinto, exibirTabelaComparacao
 from buscaLargura import buscaLargura
 from buscaProfundidade import buscaProfundidade
 from buscaGulosa import buscaGulosa
 from buscaA import buscaA
+
 
 tamanho = int(input('Tamanho de linha e coluna = '))
 parede = int(input('Quantidade de paredes = '))
@@ -20,7 +21,4 @@ buscaGulosa(tamanho, mapa)
 
 buscaA(tamanho, mapa)
 
-
-
-
-
+exibirTabelaComparacao()

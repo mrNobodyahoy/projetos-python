@@ -9,7 +9,7 @@ def buscaA(tamanho, mapa):
     nosExpandidos = 0
     pontoInicio = (0,0)
     pontoFinal = (tamanho - 1, tamanho -1)
-    distanciaInicial = calcularDistancia(0, 0, pontoFinal[0], pontoFinal[1])  
+    distanciaInicial = calcularDistancia(0, 0, pontoFinal[0], pontoFinal[1]) #Cria a estimativa do ponto inicial para o ponto final
     custoAcumulado = 0
     custoTotal = custoAcumulado + distanciaInicial
     fila = [(custoAcumulado, custoTotal, pontoInicio)]
@@ -21,7 +21,6 @@ def buscaA(tamanho, mapa):
         for j in range (0, tamanho):
              matrizZeros.append(0)
         mapaNovo.append(matrizZeros)
-
     for i in range(0, tamanho):
         linhaPai = []
         for j in range(0, tamanho):
@@ -29,9 +28,8 @@ def buscaA(tamanho, mapa):
         matrizPai.append(linhaPai)
     
     nosExpandidos = 0
-
     mapaNovo[0][0] = 1
-
+    
     while len(fila) > 0:
         fila.sort()
         custoTotal, custoAcumulado, v = fila.pop(0)
@@ -39,22 +37,18 @@ def buscaA(tamanho, mapa):
         nosExpandidos +=1
         linhaAtual = v[0]
         colunaAtual = v[1]
-
+        
         if v == pontoFinal:
             break
-            
         if colunaAtual + 1 < tamanho:
             avaliarVizinho(linhaAtual, colunaAtual + 1, custoAcumulado, v, pontoFinal, mapa, mapaNovo, matrizPai, fila)
 
-        # ESQUERDA
         if colunaAtual - 1 >= 0:
             avaliarVizinho(linhaAtual, colunaAtual - 1, custoAcumulado, v, pontoFinal, mapa, mapaNovo, matrizPai, fila)
 
-        # BAIXO
         if linhaAtual + 1 < tamanho:
             avaliarVizinho(linhaAtual + 1, colunaAtual, custoAcumulado, v, pontoFinal, mapa, mapaNovo, matrizPai, fila)
 
-        # CIMA
         if linhaAtual - 1 >= 0:
             avaliarVizinho(linhaAtual - 1, colunaAtual, custoAcumulado, v, pontoFinal, mapa, mapaNovo, matrizPai, fila)
 

@@ -30,6 +30,7 @@ def buscaGulosa(tamanho, mapa):
     mapaNovo[0][0] = 1
 
     while len(fila) > 0:
+        # Ordena a fila de prioridade com base na distância estimada ao ponto final
         fila.sort()
         distanciaAtual, v = fila.pop(0)
 
